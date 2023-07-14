@@ -11,3 +11,6 @@ class CSEC_Section:
     def find_by_id(self, id):
         obj_id = ObjectId(id)
         return mongo.db.csec_sections.find_one({"_id": obj_id})
+    
+    def find_by_subject_id(self, subject_id):
+        return list(mongo.db.csec_sections.find({"subject_id": subject_id}))

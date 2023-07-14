@@ -15,6 +15,7 @@ def get_question_templates():
 
 @question_template_routes.route("/question_templates", methods=["POST"])
 def create_question_template():
+    print("yea")
     question_data = request.get_json()
     _instance = Question_Template_Validator(question_template=question_data)
     response = _instance.validate()
