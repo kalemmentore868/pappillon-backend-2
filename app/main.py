@@ -1,4 +1,5 @@
 from flask import Flask
+from flask import request, jsonify
 from config import app, mongo
 from routes.question_template_routes import question_template_routes
 from routes.question_details_routes import question_details_routes
@@ -15,5 +16,12 @@ app.register_blueprint(question_solution_routes, url_prefix=api_prefix)
 app.register_blueprint(subject_routes, url_prefix=api_prefix)
 app.register_blueprint(csec_section_routes, url_prefix=api_prefix)
 
+@app.route('/api/getIP', methods=['GET'])
+def get_ip():
+    client_ip = request.remote_addr
+    return jsonify(ip=client_ip)
+
 if __name__ == "__main__":
     app.run(debug=True)
+
+
